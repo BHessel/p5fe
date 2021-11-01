@@ -44,6 +44,7 @@ const LoginForm = ({ setCurrentUser }) => {
         // ^this will flash and go away w/out e.preventDefault()
 
         let user = { username, password }
+        console.log('typed login-info:', user)
 
         fetch("http://localhost:3000/login", {
             method:"POST",
@@ -55,7 +56,7 @@ const LoginForm = ({ setCurrentUser }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log("Here is your user data:", data)
+                console.log("This should be my user data:", data)
                 if(data.error_message){
                     alert(data.error_message)
                 }else{
