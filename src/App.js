@@ -65,6 +65,7 @@ export default function App() {
           exact path = '/'
           component={() =>
             <LoginForm
+              setCurrentUser={setCurrentUser}
             />}
         />
         <Route

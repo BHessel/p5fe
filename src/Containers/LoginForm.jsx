@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-export default function LoginForm({ props }) {
-
+const LoginForm = ({ setCurrentUser }) => {
+    
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
 
@@ -19,7 +19,7 @@ export default function LoginForm({ props }) {
 
     const createUser = (e) => {
         e.preventDefault()
-        // e.target.reset();
+        e.target.reset();
           
           let user = {
             username: username,
@@ -33,10 +33,37 @@ export default function LoginForm({ props }) {
           }
           
         fetch("http://localhost:3000/users", requestPackage)
-        //   .then((r) => r.json())
-        //   .then(response => console.log(response))
-      
-      }
+          .then((r) => r.json())
+          .then(response => console.log('Account created:', response))  
+    }
+
+    //when form is submitted, make fetch to log in the user
+    const handleLoginSubmit = (e) => {
+        e.preventDefault()
+        console.log("attempting to log in")
+        // ^this will flash and go away w/out e.preventDefault()
+
+        let user = { username, password }
+
+        fetch("http://localhost:3000/login", {
+            method:"POST",
+            headers: {
+                "Content-Type" : "application/json",
+                "Accept" : "application/json"
+            },
+            body: JSON.stringify({ user })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log("Here is your user data:", data)
+                if(data.error_message){
+                    alert(data.error_message)
+                }else{
+                    localStorage.setItem("token", data.token)
+                    setCurrentUser(data.user_data)
+                }
+            })
+    }
 
     return (
         <>
@@ -63,7 +90,7 @@ export default function LoginForm({ props }) {
 
                 
                 <div className="login-form right-side">
-                    <form onSubmit=''>
+                    <form onSubmit={handleLoginSubmit}>
 
                         <h3>Log in</h3>
                         
@@ -85,3 +112,5 @@ export default function LoginForm({ props }) {
         </>
     )
 }
+
+export default LoginForm
