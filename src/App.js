@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import {
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 import VideoContainer from './Containers/VideoContainer';
 import LoginForm from './Containers/LoginForm';
@@ -10,7 +11,7 @@ import NotFound from './Presentational/NotFound';
 
 export default function App() {
 
-  const [ loggedIn, setLoggedIn ] = useState(false)
+  // const [ loggedIn, setLoggedIn ] = useState(false)
   const [ currentUser, setCurrentUser ] = useState(null)
 
   return (
@@ -26,14 +27,18 @@ export default function App() {
       <Switch>
         <Route
           exact path = '/'
-          component={() =>
+          render={() =>
+          currentUser === null ?
             <LoginForm
               setCurrentUser={setCurrentUser}
-            />}
+            /> :
+            <Redirect to='/VideoContainer' />
+          }
         />
+
         <Route
           exact path = '/VideoContainer'
-          component={() =>
+          render={() =>
             <VideoContainer
 
             />} 

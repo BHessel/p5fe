@@ -35,8 +35,17 @@ const LoginForm = ({ setCurrentUser, setLoggedIn }) => {
 
         fetch("http://localhost:3000/users", requestPackage)
             .then((r) => r.json())
-            .then(userData => setCurrentUser(userData))
-              //now I should make it re-render to logging me in.  
+            .then(userData => setCurrentUser(userData))  
+    }
+
+    const handleLoginSubmit = () => {
+        
+        let user = {
+            username: username,
+            password: password
+        }
+        console.log('this is the login user data:', user)
+        setCurrentUser({ user })
     }
    
 
@@ -65,9 +74,7 @@ const LoginForm = ({ setCurrentUser, setLoggedIn }) => {
 
                 
                 <div className="login-form right-side">
-                    {/* <form onSubmit={handleLoginSubmit}> */}
-                    <form onSubmit=''>
-
+                    <form onSubmit={handleLoginSubmit}>
                         <h3>Log in</h3>
                         
                         <div className="form-group">
