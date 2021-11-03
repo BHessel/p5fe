@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
-const LoginForm = ({ setCurrentUser }) => {
+const LoginForm = ({ setCurrentUser, setLoggedIn }) => {
     
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
@@ -35,7 +35,7 @@ const LoginForm = ({ setCurrentUser }) => {
 
         fetch("http://localhost:3000/users", requestPackage)
             .then((r) => r.json())
-            .then(response => console.log('Account created:', response))
+            .then(userData => setCurrentUser(userData))
               //now I should make it re-render to logging me in.  
     }
    

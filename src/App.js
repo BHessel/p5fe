@@ -11,13 +11,13 @@ import NotFound from './Presentational/NotFound';
 export default function App() {
 
   const [ loggedIn, setLoggedIn ] = useState(false)
-  const [ currentUser, setCurrentUser ] = useState({})
-  
+  const [ currentUser, setCurrentUser ] = useState(null)
+
   return (
     <>
       <div>
 
-      {loggedIn ? (
+      {currentUser ? (
         <h1>Welcome back User</h1>
       ) : (
         <h1>still need to log in</h1>
