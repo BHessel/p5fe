@@ -10,10 +10,10 @@ import Favorites from './Containers/Favorites';
 import NotFound from './Presentational/NotFound';
 
 
-export default function App() {
+const App = () => {
 
   // const [ loggedIn, setLoggedIn ] = useState(false)
-  const [ currentUser, setCurrentUser ] = useState(null)
+  const [ currentUser, setCurrentUser ] = useState({id: 1, username: 'ben123', password: 'password'})
 
   return (
     <>
@@ -41,7 +41,7 @@ export default function App() {
           exact path = '/VideoContainer'
           render={() =>
             <VideoContainer
-
+              currentUser={currentUser}
             />} 
         />
 
@@ -61,3 +61,5 @@ export default function App() {
     </>
   )
 }
+
+export default App
