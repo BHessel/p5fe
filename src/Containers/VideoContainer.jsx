@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import VideoCard from '../Presentational/VideoCard'
+import { Link } from 'react-router-dom'
 
 
 const VideoContainer = () => {
@@ -28,6 +29,11 @@ const VideoContainer = () => {
             <div className="video-container">
                 <h2 className='video-header'>Welcome to Netflix MovieMatcher</h2>
                 <p className='video-subheader'>Scroll or search for shows and movies and watch the trailer in this app. If you like it, add it to your favorites list, and then connect with friends to see where your TV interests match! </p>
+
+                <div>
+                    <button><Link to='/Favorites'>See My Favorites</Link></button>
+                </div>
+
                     {videos.map((vid, i) =>
                         <div className={`vid-${i}`}>
                             <VideoCard 

@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import VideoContainer from './Containers/VideoContainer';
 import LoginForm from './Containers/LoginForm';
+import Favorites from './Containers/Favorites';
 import NotFound from './Presentational/NotFound';
 
 
@@ -43,6 +44,15 @@ export default function App() {
 
             />} 
         />
+
+        <Route
+          exact path = '/Favorites'
+          render={() =>
+            <Favorites
+
+            />} 
+        />
+
         <Route
           component={NotFound}
         />
