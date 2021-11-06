@@ -19,7 +19,7 @@ const VideoCard = ({ video, key }) => {
                 <p>{video.title}</p>
             </div>
             <div className="modalComponent">
-                <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId='qnx6-YLXFwg' onClose={() => setOpen(false)} />
+                <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={video.url.split('/')[3]} onClose={() => setOpen(false)} />
                 <button className='btn-primary' onClick={() => setOpen(true)}>Play Now</button>
             </div> 
             {/* <div className='conditional'>
