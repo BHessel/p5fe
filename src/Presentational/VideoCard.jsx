@@ -7,9 +7,6 @@ const VideoCard = ({ video, key }) => {
 
     const [isOpen, setOpen] = useState(false)
 
-    console.log(video)
-
-
     return (
         <div className="card-bg-dark" key={key}>
             <div className="image">
@@ -22,13 +19,12 @@ const VideoCard = ({ video, key }) => {
                 <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={video.url.split('/')[3]} onClose={() => setOpen(false)} />
                 <button className='btn-primary' onClick={() => setOpen(true)}>Play Now</button>
             </div> 
-            {/* <div className='conditional'>
-                {this.state.location === 'favorites' ?
-                <button className='remove-btn' onClick={() => this.props.removeClick(this.props.video)}>Remove from Favorites</button> :
-
-                <button className='add-btn' onClick={() => this.props.buttonClick(this.props.video)}>Add to Favorites</button>
+            <div className='conditional'>
+                {window.location.pathname === '/Favorites' ?
+                <button className='remove-btn' onClick=''>Remove from Favorites</button> : 
+                <button className='add-btn' onClick=''>Add to Favorites</button>
                 }  
-            </div> */}
+            </div>
                        
         </div>
     )
