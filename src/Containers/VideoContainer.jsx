@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import VideoCard from '../Presentational/VideoCard'
 import { Link } from 'react-router-dom'
 
@@ -6,26 +6,8 @@ import { Link } from 'react-router-dom'
 const VideoContainer = ({ currentUser }) => {
     
     const [ videos, setVideos ] = useState([])
-    const [ userFavorites, setUserFavorites ] = useState([])
-
-
-    //fetch user favorites
-    useEffect(() => {
-        const url = 'http://localhost:3000/favorites'
-
-        const fetchFavorites = async () => {
-            try {
-                const response = await fetch(url)
-                const listAllFavorites = await response.json()
-                setUserFavorites(listAllFavorites)
-            } catch (error) {
-                console.log("error", error)
-            }
-        }
-        fetchFavorites()
-    }, [])
-    //i think i basically need to move this up to a HomeContainer which would then pass to videoContainer which displays videoCards or to to favorites which also displays video cards
-    //Need to get the video_id reference to show the movie data
+    const [ search, setSearch ] = useState('')
+    const userSearchRef = useRef()
 
 
     //fetch all videos
@@ -46,7 +28,6 @@ const VideoContainer = ({ currentUser }) => {
 
     //add video to favorites
     //POST request plus update state
-    
     const addToFavorites = (video) => {
         
         console.log('video obj in addtoFavs', video)
@@ -77,22 +58,33 @@ const VideoContainer = ({ currentUser }) => {
         
         //         console.log('check localhost to confirm favorite is saved. current state of Favorites is:', userFavorites)
     }
-
     
+    const handleSearch = () => {
+        let searchValue = userSearchRef.current.value
+        setSearch(searchValue)
+    }
 
     console.log('fetched video list:', videos)
- 
+
     return (
         <>   
             <div className="video-container">
                 <h2 className='video-header'>Welcome to Netflix MovieMatcher</h2>
                 <p className='video-subheader'>Scroll or search for shows and movies and watch the trailer in this app. If you like it, add it to your favorites list, and then connect with friends to see where your TV interests match! </p>
 
-                <div>
+                <div className='favs-btn'>
                     <button>
                         <Link to='/Favorites'>
                             See My Favorites
                         </Link>
+                    </button>
+                </div>
+
+                <div className='friend-search'>
+                    <p>Friend search box</p>
+                    <input className='search' type='text' placeholder='Search...' ref={userSearchRef} />
+                    <button className='submit-btn' onClick={handleSearch}>
+                        Search
                     </button>
                 </div>
 

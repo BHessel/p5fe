@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import FavCard from '../Presentational/FavCard'
+import { Link } from 'react-router-dom'
 
 const Favorites = () => {
 
@@ -36,6 +37,12 @@ const Favorites = () => {
 
     return (
         <>
+            <button>
+                <Link to='/'>
+                Return Home
+                </Link>
+            </button>
+
             <div className="playlist-container">
                     <h1 className='playlist-header'>My Playlist</h1>
                         
