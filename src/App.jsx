@@ -15,7 +15,7 @@ const App = () => {
 
   // const [ loggedIn, setLoggedIn ] = useState(false)
   
-  const [ currentUser, setCurrentUser ] = useState({})
+  const [ currentUser, setCurrentUser ] = useState({id: 1, username: 'ben123', password: 'password'})
 
   
   return (

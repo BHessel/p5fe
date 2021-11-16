@@ -21,7 +21,18 @@ const Favorites = () => {
         fetchFavorites()
     }, [])
 
-    
+    const removeFromFavorites = (favorite) => {
+        console.log('removeFromFavorites', favorite)
+        let localhostFavs = "http://localhost:3000/favorites"
+        let favId = favorite.id
+      
+        //DELETE rqst to rails backend
+        fetch(`${localhostFavs}/${favId}`, {
+          method: "DELETE",
+          header:{'Accept':'application/json'},
+          'Content-Type':'application/json'
+         })
+    }
 
     return (
         <>
@@ -34,7 +45,7 @@ const Favorites = () => {
                                 <FavCard 
                                     favorite={fav}
                                     key={i}
-                                // removeClick={removeFromFavorites}
+                                    removeClick={removeFromFavorites}
                                 />
                             </div>
                             </>

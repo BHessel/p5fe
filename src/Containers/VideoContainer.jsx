@@ -53,7 +53,8 @@ const VideoContainer = ({ currentUser }) => {
         console.log('currentUser is', currentUser)
         
         let favorites = {
-            user_id: currentUser.id,
+            user_id: 1,
+            //hard-coded to make it work w/ fake login
             video_id: video.id     
         }
 
@@ -76,6 +77,7 @@ const VideoContainer = ({ currentUser }) => {
         
         //         console.log('check localhost to confirm favorite is saved. current state of Favorites is:', userFavorites)
     }
+
     
 
     console.log('fetched video list:', videos)
