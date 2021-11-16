@@ -7,13 +7,13 @@ const LoginForm = ({ setCurrentUser, setLoggedIn }) => {
 
     const handleUsername = (e) => {
         let username = e.target.value
-        console.log(username)
+        // console.log(username)
         setUsername(username)
     }
     
     const handlePassword = (e) => {
         let password = e.target.value
-        console.log(password)
+        // console.log(password)
         setPassword(password)
     }
 

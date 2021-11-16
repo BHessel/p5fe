@@ -8,15 +8,23 @@ import VideoContainer from './Containers/VideoContainer';
 import LoginForm from './Containers/LoginForm';
 import Favorites from './Containers/Favorites';
 import NotFound from './Presentational/NotFound';
+import Banner from './Presentational/Banner'
 
 
 const App = () => {
 
   // const [ loggedIn, setLoggedIn ] = useState(false)
-  const [ currentUser, setCurrentUser ] = useState({id: 1, username: 'ben123', password: 'password'})
+  
+  const [ currentUser, setCurrentUser ] = useState({})
 
+  
   return (
     <>
+      <Banner 
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser}
+      />
+
       <div>
 
       {currentUser ? (

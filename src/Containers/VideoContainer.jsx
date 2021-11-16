@@ -81,7 +81,7 @@ const VideoContainer = ({ currentUser }) => {
     console.log('fetched video list:', videos)
  
     return (
-        <>        
+        <>   
             <div className="video-container">
                 <h2 className='video-header'>Welcome to Netflix MovieMatcher</h2>
                 <p className='video-subheader'>Scroll or search for shows and movies and watch the trailer in this app. If you like it, add it to your favorites list, and then connect with friends to see where your TV interests match! </p>

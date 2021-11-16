@@ -35,12 +35,11 @@ const Favorites = () => {
                                     favorite={fav}
                                     key={i}
                                 // removeClick={removeFromFavorites}
-                            />
+                                />
                             </div>
-                        </>
-                    ))
-                }
-        
+                            </>
+                            ))
+                        }    
             </div>
         </>
     )
