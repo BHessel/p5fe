@@ -1,15 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react'
 import VideoCard from '../Presentational/VideoCard'
+import UserCard from '../Presentational/UserCard'
 import { Link } from 'react-router-dom'
 
 
 const VideoContainer = ({ currentUser }) => {
     
     const [ videos, setVideos ] = useState([])
-    const [ search, setSearch ] = useState('')
+    const [ allUsers, setAllUsers ] = useState([])
+    const [ userSearch, setUserSearch ] = useState('')
+    const [ foundUser, setFoundUser ] = useState([])
     const userSearchRef = useRef()
 
 
+    
     //fetch all videos
     useEffect(() => {
         const url = 'http://localhost:3000/videos'
@@ -24,6 +28,22 @@ const VideoContainer = ({ currentUser }) => {
             }
         }
         fetchVideos()
+    }, [])
+    
+    //fetch all users
+    useEffect(() => {
+        const userURL = 'http://localhost:3000/users/'
+
+        const fetchUsers = async () => {
+            try {
+                const response = await fetch(userURL)
+                const userList = await response.json()
+                setAllUsers(userList)
+            } catch (error) {
+                console.log("error", error)
+            }
+        }
+        fetchUsers()
     }, [])
 
     //add video to favorites
@@ -61,10 +81,20 @@ const VideoContainer = ({ currentUser }) => {
     
     const handleSearch = () => {
         let searchValue = userSearchRef.current.value
-        setSearch(searchValue)
+        console.log('this is the searchvalue', searchValue)
+        setUserSearch(searchValue)
     }
 
+    const findFriend = (e) => {
+        e.preventDefault()  //cancels an error in the terminal that said "form submission cancelled because the form is not connected"
+        let findUser = allUsers.filter(user => user.username.toLowerCase() === userSearch.toLowerCase())
+        setFoundUser(findUser)
+    }
+
+
+
     console.log('fetched video list:', videos)
+    console.log('fetched user list:', allUsers)
 
     return (
         <>   
@@ -80,12 +110,24 @@ const VideoContainer = ({ currentUser }) => {
                     </button>
                 </div>
 
+            {/* in final form, maybe make this its own userSearch component? */}
                 <div className='friend-search'>
+                {/* this is the form to search for friends to follow */}
                     <p>Friend search box</p>
-                    <input className='search' type='text' placeholder='Search...' ref={userSearchRef} />
-                    <button className='submit-btn' onClick={handleSearch}>
-                        Search
-                    </button>
+                    <form onSubmit={(e) => findFriend(e)}>
+                        <input className='search' type='text' placeholder='Search...' ref={userSearchRef} onChange={handleSearch} />
+                        <button className='submit-btn' type='submit'>
+                            Search
+                        </button>
+                    </form>
+
+                {/* this is where searched friends will appear */}
+                {/* should be hidden initially, and reveal when a match is found */}
+                <div className="show-friend-search">
+                    <h4>{foundUser.length > 0 ? <UserCard foundUser={foundUser} /> : <div></div> }</h4>                   
+                </div>
+
+
                 </div>
 
                     {videos.map((vid, i) =>
