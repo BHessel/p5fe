@@ -124,7 +124,7 @@ const VideoContainer = ({ currentUser }) => {
                 {/* this is where searched friends will appear */}
                 {/* should be hidden initially, and reveal when a match is found */}
                 <div className="show-friend-search">
-                    <h4>{foundUser.length > 0 ? <UserCard foundUser={foundUser} /> : <div></div> }</h4>                   
+                    <h4>{foundUser.length > 0 ? <UserCard foundUser={foundUser} currentUser={currentUser} /> : <div></div> }</h4>                   
                 </div>
 
 

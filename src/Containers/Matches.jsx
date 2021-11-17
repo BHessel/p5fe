@@ -21,8 +21,6 @@ const Matches = ({ allFavs, currentUser }) => {
     //compare both user's favorites to show matches
     const compare = (sortCurrentUserFavs, sortMatchUserFavs) => {
         let matchArray = []
-        console.log('insidecompare', sortCurrentUserFavs)
-        console.log('insidecompare', sortMatchUserFavs)
         sortCurrentUserFavs.forEach((fav) => sortMatchUserFavs.forEach((favorite) => {
             if (fav.video_id === favorite.video_id){
                 matchArray.push(fav.video.title)
@@ -31,9 +29,11 @@ const Matches = ({ allFavs, currentUser }) => {
         return matchArray
     }
 
-    const showMatches = compare(sortCurrentUserFavs, sortMatchUserFavs)
+    let showMatches = compare(sortCurrentUserFavs, sortMatchUserFavs)
+    let showUniqueMatches = [...new Set(showMatches)]
                 
     console.log(showMatches)
+    console.log(showUniqueMatches)
 
 
     
@@ -42,7 +42,7 @@ const Matches = ({ allFavs, currentUser }) => {
         <>
             <div className='match-favs'>
                 <h3>You're both interested in...</h3>
-                {showMatches.map((match, i) => 
+                {showUniqueMatches.map((match, i) => 
                     <li>{match}</li>
                 )}
             </div>
