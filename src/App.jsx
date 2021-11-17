@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Switch,
   Route,
@@ -17,6 +17,28 @@ const App = () => {
   // const [ loggedIn, setLoggedIn ] = useState(false)
   
   const [ currentUser, setCurrentUser ] = useState({id: 1, username: 'ben123', password: 'password'})
+
+
+  const [ allFavs, setAllFavs ] = useState([])
+
+    console.log('allFavs', allFavs)
+    
+    //fetch user favorites
+    useEffect(() => {
+        const url = 'http://localhost:3000/favorites'
+
+        const fetchFavorites = async () => {
+            try {
+                const response = await fetch(url)
+                const listAllFavorites = await response.json()
+                // console.log('listAllFavorites', listAllFavorites)
+                setAllFavs(listAllFavorites)
+            } catch (error) {
+                console.log("error", error)
+            }
+        }
+        fetchFavorites()
+    }, [])
 
   
   return (
@@ -58,7 +80,8 @@ const App = () => {
           exact path = '/Favorites'
           render={() =>
             <Favorites
-
+              allFavs={allFavs}
+              currentUser={currentUser}
             />} 
         />
 
@@ -66,7 +89,8 @@ const App = () => {
           exact path = '/Matches'
           render={() =>
             <Matches
-
+              allFavs={allFavs}
+              currentUser={currentUser}
             />} 
         />
 

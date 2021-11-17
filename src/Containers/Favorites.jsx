@@ -1,29 +1,14 @@
-import React, { useState, useEffect } from 'react'
+// import React, { useState, useEffect } from 'react'
 import FavCard from '../Presentational/FavCard'
 import { Link } from 'react-router-dom'
 
-const Favorites = () => {
+const Favorites = ({ allFavs, currentUser }) => {
 
-    const [ userFavorites, setUserFavorites ] = useState([])
+    console.log('allFavs on favs', allFavs)
+    console.log('crntuser on favs', currentUser)
 
-    console.log('userFavs', userFavorites)
-    
-    //fetch user favorites
-    useEffect(() => {
-        const url = 'http://localhost:3000/favorites'
-
-        const fetchFavorites = async () => {
-            try {
-                const response = await fetch(url)
-                const listAllFavorites = await response.json()
-                // console.log('listAllFavorites', listAllFavorites)
-                setUserFavorites(listAllFavorites)
-            } catch (error) {
-                console.log("error", error)
-            }
-        }
-        fetchFavorites()
-    }, [])
+    //filters all favorites to just be my favorites, maps our FavCards for each in return()
+    const currentUserFavs = allFavs.filter(favorite => favorite.user_id === currentUser.id)
 
     const removeFromFavorites = (favorite) => {
         console.log('removeFromFavorites', favorite)
@@ -49,7 +34,7 @@ const Favorites = () => {
             <div className="playlist-container">
                     <h1 className='playlist-header'>My Playlist</h1>
                         
-                        {userFavorites.map((fav, i) =>
+                        {currentUserFavs.map((fav, i) =>
                              (<>
                              <div className={`pl-grid-${i}`}>
                                 <FavCard 
