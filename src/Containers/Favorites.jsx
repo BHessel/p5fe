@@ -6,6 +6,8 @@ const Favorites = () => {
 
     const [ userFavorites, setUserFavorites ] = useState([])
 
+    console.log('userFavs', userFavorites)
+    
     //fetch user favorites
     useEffect(() => {
         const url = 'http://localhost:3000/favorites'
@@ -14,6 +16,7 @@ const Favorites = () => {
             try {
                 const response = await fetch(url)
                 const listAllFavorites = await response.json()
+                // console.log('listAllFavorites', listAllFavorites)
                 setUserFavorites(listAllFavorites)
             } catch (error) {
                 console.log("error", error)
@@ -56,8 +59,7 @@ const Favorites = () => {
                                 />
                             </div>
                             </>
-                            ))
-                        }    
+                        ))}    
             </div>
         </>
     )

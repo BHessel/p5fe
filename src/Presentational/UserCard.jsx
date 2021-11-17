@@ -11,7 +11,10 @@ const UserCard = ({ foundUser }) => {
             <button>Unfollow</button>
             {/* write function to delete the follow, alerts unfollowed */}
             <button>
-                <Link to='/Matches'>
+                <Link to={{
+                    pathname: "/Matches",
+                    state: { matchUser: foundUser }
+                }}>
                     See Matches
                 </Link>
             </button>
