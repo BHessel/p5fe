@@ -9,6 +9,7 @@ import LoginForm from './Containers/LoginForm';
 import Favorites from './Containers/Favorites';
 import NotFound from './Presentational/NotFound';
 import Banner from './Presentational/Banner'
+import Matches from './Containers/Matches';
 
 
 const App = () => {
@@ -57,6 +58,14 @@ const App = () => {
           exact path = '/Favorites'
           render={() =>
             <Favorites
+
+            />} 
+        />
+
+        <Route
+          exact path = '/Matches'
+          render={() =>
+            <Matches
 
             />} 
         />
