@@ -74,7 +74,6 @@ const VideoContainer = ({ currentUser }) => {
         //             setUserFavorites([...userFavorites, favorite])
         //         }
         //     })
-        // //if the state of userFavorites does not include the given favorite, add it to userFavorites
         
         //         console.log('check localhost to confirm favorite is saved. current state of Favorites is:', userFavorites)
     }
