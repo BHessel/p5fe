@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import VideoCard from '../Presentational/VideoCard'
 import UserCard from '../Presentational/UserCard'
 import { Link } from 'react-router-dom'
+import { getUsers } from '../API/User'
 
 
 const VideoContainer = ({ currentUser }) => {
@@ -32,18 +33,8 @@ const VideoContainer = ({ currentUser }) => {
     
     //fetch all users
     useEffect(() => {
-        const userURL = 'http://localhost:3000/users/'
-
-        const fetchUsers = async () => {
-            try {
-                const response = await fetch(userURL)
-                const userList = await response.json()
-                setAllUsers(userList)
-            } catch (error) {
-                console.log("error", error)
-            }
-        }
-        fetchUsers()
+        const users = getUsers()
+        setAllUsers(users)
     }, [])
 
     //add video to favorites
