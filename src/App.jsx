@@ -40,7 +40,7 @@ const App = () => {
         fetchFavorites()
     }, [])
 
-  // Jake left his mark
+  // Jake left his mark here
   return (
     <>
       <Banner 
