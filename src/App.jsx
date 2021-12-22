@@ -10,6 +10,7 @@ import Favorites from './Containers/Favorites';
 import NotFound from './Presentational/NotFound';
 import Banner from './Presentational/Banner'
 import Matches from './Containers/Matches';
+import { fetchFavorites } from './Containers/import';
 
 
 const App = () => {
@@ -17,27 +18,21 @@ const App = () => {
   // const [ loggedIn, setLoggedIn ] = useState(false)
   
   const [ currentUser, setCurrentUser ] = useState({id: 1, username: 'ben123', password: 'password'})
-
-
   const [ allFavs, setAllFavs ] = useState([])
 
     console.log('allFavs', allFavs)
     
     //fetch user favorites
     useEffect(() => {
-        const url = 'http://localhost:3000/favorites'
-
-        const fetchFavorites = async () => {
+        const handleFetchFavorites = async () => {
             try {
-                const response = await fetch(url)
-                const listAllFavorites = await response.json()
-                // console.log('listAllFavorites', listAllFavorites)
-                setAllFavs(listAllFavorites)
-            } catch (error) {
-                console.log("error", error)
+                let allFavorites = await fetchFavorites()
+                setAllFavs(allFavorites)
+            } catch (e) {
+                console.log("error", e)
             }
         }
-        fetchFavorites()
+        handleFetchFavorites()
     }, [])
 
   

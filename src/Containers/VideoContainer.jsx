@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import VideoCard from '../Presentational/VideoCard'
 import UserCard from '../Presentational/UserCard'
 import { Link } from 'react-router-dom'
-import { getUsers } from './import'
+import { getUsers, fetchVideos } from './import'
 
 
 const VideoContainer = ({ currentUser }) => {
@@ -12,27 +12,21 @@ const VideoContainer = ({ currentUser }) => {
     const [ userSearch, setUserSearch ] = useState('')
     const [ foundUser, setFoundUser ] = useState([])
     const userSearchRef = useRef()
-
-console.log('import getUsers from file', getUsers)
-console.log('import getUsers from file, invoked', getUsers())
-
     
-    //fetch all videos
+    //set state for all videos
     useEffect(() => {
-        const url = 'http://localhost:3000/videos'
-
-        const fetchVideos = async () => {
+        const handleFetchVideos = async () => {
             try {
-                const response = await fetch(url)
-                const videoList = await response.json()
-                setVideos(videoList)
-            } catch (error) {
-                console.log("error", error)
+                let allVideos = await fetchVideos()
+                setVideos(allVideos)
+            } catch(e) {
+                console.log('e', e)
             }
         }
-        fetchVideos()
+        return handleFetchVideos
     }, [])
 
+    //set state for allUsers
     useEffect(() => {
         const handleGetUsers = async () => {
             try {
@@ -47,27 +41,11 @@ console.log('import getUsers from file, invoked', getUsers())
 
 
     console.log('allUsers list', allUsers)
+    console.log('allVideos list', videos)
 
     
-    // //fetch all users
-    // useEffect(() => {
-    //     const userURL = 'http://localhost:3000/users/'
-
-    //     const fetchUsers = async () => {
-    //         try {
-    //             const response = await fetch(userURL)
-    //             const userList = await response.json()
-    //             setAllUsers(userList)
-    //         } catch (error) {
-    //             console.log("error", error)
-    //         }
-    //     }
-    //     fetchUsers()
-    // }, [])
-
     //add video to favorites
     //POST request plus update state
-    
     const addToFavorites = (video) => {
         
         console.log('video obj in addtoFavs', video)
