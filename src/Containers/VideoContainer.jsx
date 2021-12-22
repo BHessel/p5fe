@@ -34,15 +34,15 @@ console.log('import getUsers from file, invoked', getUsers())
     }, [])
 
     useEffect(() => {
-        const users = async () => {
+        const handleGetUsers = async () => {
             try {
-                let response = await getUsers()
-                setAllUsers(response)
+                let users = await getUsers()
+                setAllUsers(users)
             } catch(e) {
                 console.log('e', e)
             }
         }
-        return users
+        return handleGetUsers
     }, [])
 
 
