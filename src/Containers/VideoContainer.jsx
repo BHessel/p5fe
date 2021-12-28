@@ -23,7 +23,7 @@ const VideoContainer = ({ currentUser }) => {
                 console.log('e', e)
             }
         }
-        return handleFetchVideos
+        return handleFetchVideos()
     }, [])
 
     //set state for allUsers
@@ -36,7 +36,7 @@ const VideoContainer = ({ currentUser }) => {
                 console.log('e', e)
             }
         }
-        return handleGetUsers
+        return handleGetUsers()
     }, [])
 
 
