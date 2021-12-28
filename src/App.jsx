@@ -11,6 +11,9 @@ import NotFound from './Presentational/NotFound';
 import Banner from './Presentational/Banner'
 import Matches from './Containers/Matches';
 import { fetchFavorites } from './Containers/import';
+import Amplify, { Auth } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 
 
 const App = () => {
