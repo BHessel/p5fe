@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 
-const Banner = ({ currentUser, setCurrentUser }) => {
+const Banner = ({ signOut, currentUser, setCurrentUser }) => {
 
     let history = useHistory()
 
@@ -16,7 +16,7 @@ const Banner = ({ currentUser, setCurrentUser }) => {
             
             <div className='logout'>
                 {currentUser ? (
-                    <button className='logout-btn' onClick={logout}>
+                    <button className='logout-btn' onClick={signOut}>
                         Logout
                     </button>
                 ) : (

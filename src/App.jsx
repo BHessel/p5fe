@@ -11,12 +11,16 @@ import NotFound from './Presentational/NotFound';
 import Banner from './Presentational/Banner'
 import Matches from './Containers/Matches';
 import { fetchFavorites } from './Containers/import';
-import Amplify, { Auth } from 'aws-amplify';
-import awsconfig from './aws-exports';
-Amplify.configure(awsconfig);
 
+import { Amplify } from 'aws-amplify';
 
-const App = () => {
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+
+import awsExports from './aws-exports';
+Amplify.configure(awsExports);
+
+const App = ({ signOut, user }) => {
 
   // const [ loggedIn, setLoggedIn ] = useState(false)
   
@@ -44,12 +48,13 @@ const App = () => {
       <Banner 
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}
+        signOut={signOut}
       />
 
       <div>
 
       {currentUser ? (
-        <h1>Welcome back User</h1>
+        <h1>Welcome back {user.attributes.email}</h1>
       ) : (
         <h1>still need to log in</h1>
       )}
@@ -101,4 +106,4 @@ const App = () => {
   )
 }
 
-export default App
+export default withAuthenticator(App)
