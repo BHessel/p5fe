@@ -2,16 +2,17 @@ import React, { useState, useEffect, useRef } from 'react'
 import VideoCard from '../Presentational/VideoCard'
 import UserCard from '../Presentational/UserCard'
 import { Link } from 'react-router-dom'
-import { getUsers, fetchVideos } from './import'
+import { fetchVideos } from './import'
 
 
-const VideoContainer = ({ currentUser }) => {
+const VideoContainer = ({ currentUser, allUsers }) => {
     
     const [ videos, setVideos ] = useState([])
-    const [ allUsers, setAllUsers ] = useState([])
+    // const [ allUsers, setAllUsers ] = useState([])
     const [ userSearch, setUserSearch ] = useState('')
     const [ foundUser, setFoundUser ] = useState([])
     const userSearchRef = useRef()
+    const [ currentPage, setCurrentPage ] = useState(1)
     
     //set state for all videos
     useEffect(() => {
@@ -25,23 +26,6 @@ const VideoContainer = ({ currentUser }) => {
         }
         return handleFetchVideos()
     }, [])
-
-    //set state for allUsers
-    useEffect(() => {
-        const handleGetUsers = async () => {
-            try {
-                let users = await getUsers()
-                setAllUsers(users)
-            } catch(e) {
-                console.log('e', e)
-            }
-        }
-        return handleGetUsers()
-    }, [])
-
-
-    console.log('allUsers list', allUsers)
-    console.log('allVideos list', videos)
 
     
     //add video to favorites
@@ -66,14 +50,6 @@ const VideoContainer = ({ currentUser }) => {
         }
         
         fetch('http://localhost:3000/favorites', requestPackage)
-        //     .then(response => response.json())
-        //     .then(favorite => {
-        //         if(!userFavorites.includes(favorite)){
-        //             setUserFavorites([...userFavorites, favorite])
-        //         }
-        //     })
-        
-        //         console.log('check localhost to confirm favorite is saved. current state of Favorites is:', userFavorites)
     }
     
     const handleSearch = () => {
@@ -93,9 +69,11 @@ const VideoContainer = ({ currentUser }) => {
     console.log('fetched video list:', videos)
     console.log('fetched user list:', allUsers)
 
+
+
     return (
         <>   
-            <div className="video-container">
+            
                 <h2 className='video-header'>Welcome to Netflix MovieMatcher</h2>
                 <p className='video-subheader'>Scroll or search for shows and movies and watch the trailer in this app. If you like it, add it to your favorites list, and then connect with friends to see where your TV interests match! </p>
 
@@ -123,22 +101,22 @@ const VideoContainer = ({ currentUser }) => {
                 <div className="show-friend-search">
                     <h4>{foundUser.length > 0 ? <UserCard foundUser={foundUser} currentUser={currentUser} /> : <div></div> }</h4>                   
                 </div>
-
-
                 </div>
-
-                    {videos.map((vid, i) =>
-                        <div className={`vid-${i}`}>
-                            <VideoCard 
-                                video={vid}
-                                key={i}
-                                addToFavorites={addToFavorites}
-                            />  
-                        </div>
-                    )}
-            </div>
+                
+                <div className="video-container">
+                        {videos.map((vid, i) =>
+                            <div className={`vid-${i}`}>
+                                <VideoCard 
+                                    video={vid}
+                                    key={i}
+                                    addToFavorites={addToFavorites}
+                                />  
+                            </div>
+                        )}
+                </div>
         </>
     )
 }
+
 
 export default VideoContainer

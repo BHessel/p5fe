@@ -4,6 +4,9 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import { getUsers } from '../src/Containers/import'
+
+//Component imports
 import VideoContainer from './Containers/VideoContainer';
 import LoginForm from './Containers/LoginForm';
 import Favorites from './Containers/Favorites';
@@ -12,22 +15,20 @@ import Banner from './Presentational/Banner'
 import Matches from './Containers/Matches';
 import { fetchFavorites } from './Containers/import';
 
+//AWS imports
 import { Amplify } from 'aws-amplify';
-
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-
 import awsExports from './aws-exports';
+
 Amplify.configure(awsExports);
 
 const App = ({ signOut, user }) => {
 
-  // const [ loggedIn, setLoggedIn ] = useState(false)
-  
   const [ currentUser, setCurrentUser ] = useState({id: 1, username: 'ben123', password: 'password'})
   const [ allFavs, setAllFavs ] = useState([])
-
-    console.log('allFavs', allFavs)
+  const [ allUsers, setAllUsers ] = useState([])
+  
     
     //fetch user favorites
     useEffect(() => {
@@ -41,6 +42,22 @@ const App = ({ signOut, user }) => {
         }
         handleFetchFavorites()
     }, [])
+
+    //set state for allUsers
+    useEffect(() => {
+      const handleGetUsers = async () => {
+          try {
+              let users = await getUsers()
+              setAllUsers(users)
+          } catch(e) {
+              console.log('e', e)
+          }
+      }
+      return handleGetUsers()
+    }, [])
+
+
+  console.log('allUsers list', allUsers)
 
   
   return (
@@ -76,6 +93,7 @@ const App = ({ signOut, user }) => {
           render={() =>
             <VideoContainer
               currentUser={currentUser}
+              allUsers={allUsers}
             />} 
         />
 

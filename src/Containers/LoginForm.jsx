@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Auth } from 'aws-amplify'
 
 const LoginForm = ({ setCurrentUser, setLoggedIn }) => {
     
@@ -49,33 +48,11 @@ const LoginForm = ({ setCurrentUser, setLoggedIn }) => {
     // }
 
 
-    const signUp = async () => {
-        try {
-            const user = await Auth.signUp(
-                username,
-                password
-            );
-            console.log('aws user', user);
-        } catch (error) {
-            console.log('error signing up:', error);
-        }
-    }
-
-    const signIn = async () =>  {
-        try {
-            const user = await Auth.signIn(username, password);
-            console.log('aws sign in', user)
-        } catch (error) {
-            console.log('error signing in', error);
-        }
-    }
-    
-   
-
     return (
         <>
         <div className="create-user left-side">
-                    <form onSubmit={signUp}>
+                    {/* <form onSubmit={createUser}> */}
+                    <form onSubmit="">
 
                         <h3>Create an Account</h3>
                         
@@ -97,7 +74,8 @@ const LoginForm = ({ setCurrentUser, setLoggedIn }) => {
 
                 
                 <div className="login-form right-side">
-                    <form onSubmit={signIn}>
+                    {/* <form onSubmit={handleLoginSubmit}> */}
+                    <form onSubmit="">
                         <h3>Log in</h3>
                         
                         <div className="form-group">

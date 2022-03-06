@@ -8,6 +8,7 @@ const VideoCard = ({ video, key, addToFavorites, favorite }) => {
     const [isOpen, setOpen] = useState(false)
     
     return (
+
         <div className="card-bg-dark" key={key}>
             <div className="image">
                 <img src={video.thumbnail} alt="video thumbnail"/>
