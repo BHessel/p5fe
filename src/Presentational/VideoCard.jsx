@@ -9,23 +9,27 @@ const VideoCard = ({ video, key, addToFavorites, favorite }) => {
     
     return (
 
-        <div className="card-bg-dark" key={key}>
-            <div className="image">
+        <div className="card-container" key={key}>
+            <div className="vid-card-img">
                 <img src={video.thumbnail} alt="video thumbnail"/>
             </div>
-            <div className="title">
-                <p>{video.title}</p>
+        <div className='card-content'>
+            
+            <p className="vid-card-title">{video.title}</p>
+            
+            <div className='vid-card-buttons'>
+                <div className="modalComponent">
+                    <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={video.url.split('/')[3]} onClose={() => setOpen(false)} />
+                    <button className='vid-card-btn' onClick={() => setOpen(true)}>Play Now</button>
+                </div> 
+                <div className='conditional'>
+                    {window.location.pathname === '/Favorites' ?
+                    <button className='remove-btn' onClick=''>Remove from Favorites</button> : 
+                    <button className='vid-card-btn' onClick={() => addToFavorites(video)}>Add to Favorites</button>
+                    }  
+                </div>
             </div>
-            <div className="modalComponent">
-                <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={video.url.split('/')[3]} onClose={() => setOpen(false)} />
-                <button className='btn-primary' onClick={() => setOpen(true)}>Play Now</button>
-            </div> 
-            <div className='conditional'>
-                {window.location.pathname === '/Favorites' ?
-                <button className='remove-btn' onClick=''>Remove from Favorites</button> : 
-                <button className='add-btn' onClick={() => addToFavorites(video)}>Add to Favorites</button>
-                }  
-            </div>
+        </div>
                        
         </div>
     )
