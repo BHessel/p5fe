@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -32,6 +33,8 @@ code {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
+
+
 .card-container {
   background-color: white;
   width: 100%;
@@ -40,11 +43,16 @@ code {
   flex-direction: column;
   max-height: 100%;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: transform .2s;
 }
 
 .card-container:hover {
   transform: scale(1.15);
 }
+
+/* for some reason the hover above ruins the modal video */
+
+
 
 .card-content {
   display: flex;
@@ -52,6 +60,7 @@ code {
   justify-content: space-around;
   height: 100%;
 }
+
 
 .vid-card-img img {
   object-fit: contain;
@@ -62,13 +71,12 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 5px;
-  padding: 10px 10px;  
+  row-gap: 8px;
+  padding: 10px 15px;  
 }
 
 
-
-.vid-card-buttons :nth-child(n+0) {
+.vid-card-btn {
   display: block;
   width: 100%;
   background-color: whitesmoke;
@@ -76,12 +84,15 @@ code {
   padding: 5px;
   cursor: pointer;
   border: none;
+  
 }
 
-.vid-card-title {
-  padding: 2px;
+.vid-card-title-container {
   margin-left: 2%;
   font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  padding: 5px 5px 0px;
+ 
 }
 
 

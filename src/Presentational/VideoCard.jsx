@@ -16,23 +16,20 @@ const VideoCard = ({ video, key, addToFavorites, favorite }) => {
         <div className='card-content'>
             
             <div className='vid-card-title-container'>
-                <p className="vid-card-title">{video.title}</p>
+                <h2 className="vid-card-title">{video.title}</h2>
             </div>
             
             <div className='vid-card-buttons'>
-                <div className="modalComponent">
-                    <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={video.url.split('/')[3]} onClose={() => setOpen(false)} />
+                <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={video.url.split('/')[3]} onClose={() => setOpen(false)} />
                     <button className='vid-card-btn' onClick={() => setOpen(true)}>Play Now</button>
-                </div> 
-                <div className='conditional'>
+               
                     {window.location.pathname === '/Favorites' ?
-                    <button className='remove-btn' onClick=''>Remove from Favorites</button> : 
+                    <button className='remove-btn ' onClick=''>Remove from Favorites</button> : 
                     <button className='vid-card-btn' onClick={() => addToFavorites(video)}>Add to Favorites</button>
                     }  
-                </div>
+                
             </div>
-        </div>
-                       
+        </div>        
         </div>
     )
 }

@@ -105,13 +105,13 @@ const VideoContainer = ({ currentUser, allUsers }) => {
                 
                 <div className="video-container">
                         {videos.map((vid, i) =>
-                            <div className={`vid-${i}`}>
+                            
                                 <VideoCard 
                                     video={vid}
                                     key={i}
                                     addToFavorites={addToFavorites}
                                 />  
-                            </div>
+                            
                         )}
                 </div>
         </>
