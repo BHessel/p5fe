@@ -15,7 +15,9 @@ const VideoCard = ({ video, key, addToFavorites, favorite }) => {
             </div>
         <div className='card-content'>
             
-            <p className="vid-card-title">{video.title}</p>
+            <div className='vid-card-title-container'>
+                <p className="vid-card-title">{video.title}</p>
+            </div>
             
             <div className='vid-card-buttons'>
                 <div className="modalComponent">

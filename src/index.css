@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -32,16 +34,19 @@ code {
 }
 
 .card-container {
-  background-color: whitesmoke;
+  background-color: white;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   max-height: 100%;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: black;
-  /* get rid of border */
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
 }
 
 .vid-card-img img {
@@ -49,14 +54,33 @@ code {
   width: 100%;
 }
 
-.vid-card-title {
-  text-align: center;
-  padding: 5px;
-}
-
 .vid-card-buttons {
   display: flex;
-  justify-content: space-evenly;
-  padding-bottom: 10px;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 10px;  
 }
+
+.vid-card-buttons :nth-child(n+1) {
+  display: block;
+  width: 100%;
+  background-color: whitesmoke;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.vid-card-title {
+  padding: 2px;
+  margin-left: 2%;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+
+
+
 
