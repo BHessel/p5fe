@@ -25,12 +25,10 @@ code {
 
 .video-container {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 40px;
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
-  padding-left: 15px;
-  padding-right: 15px;
-  /* this does give padding, but seems to be a bit messed up by the  */
+  padding: 50px;
 }
 
 .card-container {
@@ -40,6 +38,11 @@ code {
   display: flex;
   flex-direction: column;
   max-height: 100%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.card-container:hover {
+  transform: scale(1.15);
 }
 
 .card-content {
@@ -58,10 +61,13 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5px 10px;  
+  row-gap: 5px;
+  padding: 10px 10px;  
 }
 
-.vid-card-buttons :nth-child(n+1) {
+
+
+.vid-card-buttons :nth-child(n+0) {
   display: block;
   width: 100%;
   background-color: whitesmoke;
@@ -76,6 +82,8 @@ code {
   margin-left: 2%;
   font-family: 'Roboto', sans-serif;
 }
+
+
 
 
 
