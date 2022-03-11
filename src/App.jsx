@@ -70,11 +70,11 @@ const App = ({ signOut, user }) => {
 
       <div>
 
-      {currentUser ? (
+      {/* {currentUser ? (
         <h1>Welcome back {user.attributes.email}</h1>
       ) : (
         <h1>still need to log in</h1>
-      )}
+      )} */}
 
       <Switch>
         <Route

@@ -13,6 +13,10 @@ const Banner = ({ signOut, currentUser, setCurrentUser }) => {
 
     return (
         <div className='banner-box'>
+
+            <div className='logo'>
+                <p>IMAGE</p>
+            </div>
             
             <div className='logout'>
                 {currentUser ? (

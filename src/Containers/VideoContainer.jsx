@@ -73,7 +73,7 @@ const VideoContainer = ({ currentUser, allUsers }) => {
 
     return (
         <>   
-            
+            <div className='vid-grid-top'>
                 <h2 className='video-header'>Welcome to Netflix MovieMatcher</h2>
                 <p className='video-subheader'>Scroll or search for shows and movies and watch the trailer in this app. If you like it, add it to your favorites list, and then connect with friends to see where your TV interests match! </p>
 
@@ -84,6 +84,7 @@ const VideoContainer = ({ currentUser, allUsers }) => {
                         </Link>
                     </button>
                 </div>
+
 
             {/* in final form, maybe make this its own userSearch component? */}
                 <div className='friend-search'>
@@ -102,16 +103,16 @@ const VideoContainer = ({ currentUser, allUsers }) => {
                     <h4>{foundUser.length > 0 ? <UserCard foundUser={foundUser} currentUser={currentUser} /> : <div></div> }</h4>                   
                 </div>
                 </div>
+            
+            </div>
                 
                 <div className="video-container">
                         {videos.map((vid, i) =>
-                            
                                 <VideoCard 
                                     video={vid}
                                     key={i}
                                     addToFavorites={addToFavorites}
                                 />  
-                            
                         )}
                 </div>
         </>

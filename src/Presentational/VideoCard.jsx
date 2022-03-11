@@ -1,17 +1,16 @@
 import React, { useState } from 'react'
-import ModalVideo from 'react-modal-video'
-import '../../node_modules/react-modal-video/scss/modal-video.scss'
+import VideoPlay from './video'
 
 
 const VideoCard = ({ video, key, addToFavorites, favorite }) => {
-
-    const [isOpen, setOpen] = useState(false)
-    
+        
     return (
 
         <div className="card-container" key={key}>
             <div className="vid-card-img">
-                <img src={video.thumbnail} alt="video thumbnail"/>
+                <VideoPlay
+                  videoURL={video.url}
+                />
             </div>
         <div className='card-content'>
             
@@ -20,8 +19,7 @@ const VideoCard = ({ video, key, addToFavorites, favorite }) => {
             </div>
             
             <div className='vid-card-buttons'>
-                <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={video.url.split('/')[3]} onClose={() => setOpen(false)} />
-                    <button className='vid-card-btn' onClick={() => setOpen(true)}>Play Now</button>
+                    <button className='vid-card-btn'>Play Now</button>
                
                     {window.location.pathname === '/Favorites' ?
                     <button className='remove-btn ' onClick=''>Remove from Favorites</button> : 
