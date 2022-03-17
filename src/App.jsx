@@ -62,13 +62,16 @@ const App = ({ signOut, user }) => {
   
   return (
     <>
+    <div className='main-grid'>
+    {/* <div className='banner-container'> */}
       <Banner 
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}
         signOut={signOut}
       />
+      {/* </div> */}
 
-      <div>
+      <div className='body-container'>
 
       {/* {currentUser ? (
         <h1>Welcome back {user.attributes.email}</h1>
@@ -119,6 +122,7 @@ const App = ({ signOut, user }) => {
           component={NotFound}
         />
       </Switch>
+      </div>
       </div>
     </>
   )

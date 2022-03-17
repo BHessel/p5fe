@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
+import logo from '../../src/Images/netflixMMlogoSMALL.png'
 
 const Banner = ({ signOut, currentUser, setCurrentUser }) => {
 
@@ -14,8 +15,8 @@ const Banner = ({ signOut, currentUser, setCurrentUser }) => {
     return (
         <div className='banner-box'>
 
-            <div className='logo'>
-                <p>IMAGE</p>
+            <div className='logoContainer'>
+                <img src={logo} className='logoIMG'/>
             </div>
             
             <div className='logout'>

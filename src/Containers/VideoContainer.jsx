@@ -73,7 +73,8 @@ const VideoContainer = ({ currentUser, allUsers }) => {
 
     return (
         <>   
-            <div className='vid-grid-top'>
+            {/* <div className='body-containers'> */}
+            {/* <div className='vid-grid-top'> */}
                 <h2 className='video-header'>Welcome to Netflix MovieMatcher</h2>
                 <p className='video-subheader'>Scroll or search for shows and movies and watch the trailer in this app. If you like it, add it to your favorites list, and then connect with friends to see where your TV interests match! </p>
 
@@ -89,12 +90,14 @@ const VideoContainer = ({ currentUser, allUsers }) => {
             {/* in final form, maybe make this its own userSearch component? */}
                 <div className='friend-search'>
                 {/* this is the form to search for friends to follow */}
-                    <p>Friend search box</p>
+                    <p>Search For Your Friends</p>
                     <form onSubmit={(e) => findFriend(e)}>
                         <input className='search' type='text' placeholder='Search...' ref={userSearchRef} onChange={handleSearch} />
                         <button className='submit-btn' type='submit'>
-                            Search
+                            Username
                         </button>
+                        <p>Enter your friend's username or email to make yourselves match!</p>
+                        {/* this p should be light grey, small, below searchbox */}
                     </form>
 
                 {/* this is where searched friends will appear */}
@@ -102,7 +105,7 @@ const VideoContainer = ({ currentUser, allUsers }) => {
                 <div className="show-friend-search">
                     <h4>{foundUser.length > 0 ? <UserCard foundUser={foundUser} currentUser={currentUser} /> : <div></div> }</h4>                   
                 </div>
-                </div>
+                {/* </div> close vid-grid-top */}
             
             </div>
                 
@@ -115,6 +118,7 @@ const VideoContainer = ({ currentUser, allUsers }) => {
                                 />  
                         )}
                 </div>
+                {/* </div> */}
         </>
     )
 }
