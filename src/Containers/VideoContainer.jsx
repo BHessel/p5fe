@@ -75,8 +75,8 @@ const VideoContainer = ({ currentUser, allUsers }) => {
         <>   
             {/* <div className='body-containers'> */}
             {/* <div className='vid-grid-top'> */}
-                <h2 className='video-header bg-color'>Welcome to Netflix MovieMatcher</h2>
-                <p className='video-subheader bg-color'>Scroll or search for shows and movies and watch the trailer in this app. If you like it, add it to your favorites list, and then connect with friends to see where your TV interests match! </p>
+                <h1 className='video-header bg-color'>Welcome to Netflix MovieMatcher</h1>
+                <p className='video-subheader bg-color'>Scroll or search for shows and movies to watch each trailer. If you like it, click "Add to Favorites," and then connect with friends to see where your TV interests match! </p>
 
 
 
@@ -101,7 +101,7 @@ const VideoContainer = ({ currentUser, allUsers }) => {
             
             </div>
                 <div className='subheader bg-color'>
-                        <p>Enter your friend's username or email to make yourselves match!</p>
+                        <p>Enter your friend's username or email to make yourselves match</p>
                     </div>
                 <div className='favs-btn bg-color'>
                     <button className='favs-btn-design'>
