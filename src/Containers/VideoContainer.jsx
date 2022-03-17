@@ -78,13 +78,6 @@ const VideoContainer = ({ currentUser, allUsers }) => {
                 <h2 className='video-header bg-color'>Welcome to Netflix MovieMatcher</h2>
                 <p className='video-subheader bg-color'>Scroll or search for shows and movies and watch the trailer in this app. If you like it, add it to your favorites list, and then connect with friends to see where your TV interests match! </p>
 
-                <div className='favs-btn bg-color'>
-                    <button>
-                        <Link to='/Favorites'>
-                            See My Favorites
-                        </Link>
-                    </button>
-                </div>
 
 
             {/* in final form, maybe make this its own userSearch component? */}
@@ -110,6 +103,13 @@ const VideoContainer = ({ currentUser, allUsers }) => {
                 <div className='subheader bg-color'>
                         <p>Enter your friend's username or email to make yourselves match!</p>
                     </div>
+                <div className='favs-btn bg-color'>
+                    <button className='favs-btn-design'>
+                        <Link to='/Favorites'>
+                            See My Favorites
+                        </Link>
+                    </button>
+                </div>
                 
                 <div className="video-container">
                         {videos.map((vid, i) =>

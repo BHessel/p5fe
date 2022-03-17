@@ -125,6 +125,7 @@ code {
   justify-content: center;
   align-items: center;
   padding: 10px;
+
 }
 
 .bg-color {
@@ -147,14 +148,37 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
+  padding: 15px;
 }
+
+.favs-btn-design {
+  border-radius: 15px;
+  padding: 20px;
+  font-family: 'SF Comic Script';
+  font-size: large;
+  background-color: #000000;
+  color: whitesmoke;
+}
+
+
+
+button a:link{
+  text-decoration: none;
+}
+
+button a:visited { text-decoration: none; color:whitesmoke; }
+button a:hover { text-decoration: none; color: red;}
+button a:focus {
+  text-decoration: none;
+  color: #831010;
+}
+
 
 .friend-search {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  padding: 5px;
+  padding: 10px;
 }
 
 
