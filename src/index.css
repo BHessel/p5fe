@@ -65,9 +65,15 @@ code {
   transform: scale(1.15);
 }
 
-/* for some reason the hover above ruins the modal video */
-
-
+.card-container-favs {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* max-height: 100%; */
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
 
 .card-content {
   display: flex;
@@ -78,11 +84,20 @@ code {
 
 
 .vid-card-img {
+  object-fit: cover;
+  width: 300px;
+  height: 175px;
+}
+
+.vid-card-img img {
+  
+}
+
+/* .vid-card-img-favs {
   object-fit: contain;
   width: 100%;
   height: 100%;
-}
-
+} */
 
 .vid-card-buttons {
   display: flex;
@@ -112,13 +127,6 @@ code {
  
 }
 
-
-/* .vid-grid-top {
-  display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  grid-gap: 10px;
-  width: 100%;
-} */
 
 .video-header {
   display: flex;
@@ -221,6 +229,14 @@ code {
   padding: 15px;
 }
 
+.favs-btn-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
 .favs-btn-design {
   border-radius: 15px;
   padding: 20px;
@@ -230,14 +246,18 @@ code {
   color: whitesmoke;
 }
 
-
-
 button a:link{
   text-decoration: none;
 }
 
-button a:visited { text-decoration: none; color:whitesmoke; }
-button a:hover { text-decoration: none; color: red; transition: .2s;}
+button a:visited {
+  text-decoration: none; color:whitesmoke;
+}
+
+button a:hover {
+  text-decoration: none; color: red; transition: .5s;
+}
+
 button a:focus {
   text-decoration: none;
   color: #831010;
