@@ -128,9 +128,73 @@ code {
 
 }
 
+
+
 .submit-btn {
-  margin-left: 10px;
+  width: 150px;
+  height: 35px;
+  border: 2px solid red;
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+  transition: 1s;
+  color: white;
+  /* margin-left: 10px; */
 }
+
+.submit-btn::before, .submit-btn::after {
+  position: absolute;
+  background: black;
+  z-index: -1;
+  transition: 1s;
+  content: '';
+}
+
+.submit-btn::before {
+  height: 35px;
+  width: 112px;
+}
+
+.submit-btn::after {
+  height: 35px;
+  width: 112px;
+}
+
+.submit-btn:hover::before {
+  width: 0px;
+}
+
+.submit-btn:hover::after {
+  height: 0px;
+}
+
+.submit-btn:hover {
+  background: black;
+}
+
+.search {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-size: 1rem;
+	margin: 0 auto;
+  padding: 0px 15px;
+  /* border-radius: 0.2rem; */
+  background-color: rgb(255, 255, 255);
+  border: none;
+  width: 90%;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+  height: 35px;
+}
+
+
 
 .bg-color {
   background-color: whitesmoke;
@@ -147,6 +211,7 @@ code {
   display: flex;
   justify-content: center;
   font-size: small;
+  padding: 5px;
 }
 
 .favs-btn {
@@ -172,7 +237,7 @@ button a:link{
 }
 
 button a:visited { text-decoration: none; color:whitesmoke; }
-button a:hover { text-decoration: none; color: red;}
+button a:hover { text-decoration: none; color: red; transition: .2s;}
 button a:focus {
   text-decoration: none;
   color: #831010;
@@ -184,7 +249,16 @@ button a:focus {
   justify-content: center;
   align-items: center;
   padding: 10px 0px 0px 0px;
-  font-size: large;
+  /* font-size: large; */
+}
+
+.friend-search-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  /* font-size: large; */
+  
 }
 
 

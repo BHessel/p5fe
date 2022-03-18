@@ -84,10 +84,10 @@ const VideoContainer = ({ currentUser, allUsers }) => {
                 <div className='friend-search bg-color'>
                 {/* this is the form to search for friends to follow */}
                     <p>Search For Your Friends</p>
-                    <form onSubmit={(e) => findFriend(e)}>
-                        <input className='search' type='text' placeholder='Search...' ref={userSearchRef} onChange={handleSearch} />
+                    <form className='friend-search-2' onSubmit={(e) => findFriend(e)}>
+                        <input className='search' type='text' placeholder='Enter email' ref={userSearchRef} onChange={handleSearch} />
                         <button className='submit-btn' type='submit'>
-                            Username
+                            Search
                         </button>
                         {/* this p should be light grey, small, below searchbox */}
                     </form>
