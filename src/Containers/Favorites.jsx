@@ -25,13 +25,14 @@ const Favorites = ({ allFavs, currentUser }) => {
 
     return (
         <>
+        <div>
             <div className='favs-btn-2 bg-color'>
             <button className='favs-btn-design'>
                 <Link to='/'>
                 Return Home
                 </Link>
             </button>
-
+        </div>
             <div className="video-container">                  
                         {currentUserFavs.map((fav, i) =>
                              (<>

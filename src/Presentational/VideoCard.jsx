@@ -6,16 +6,16 @@ const VideoCard = ({ video, key, addToFavorites, favorite }) => {
         
     return (
 
-        <div className="card-container" key={key}>
-            <div className="vid-card-img">
-                <VideoPlay
-                  videoURL={video.url}
-                />
-            </div>
+    <div className="card-container" key={key}>
+        <div className="vid-card-img">
+            <VideoPlay
+              videoURL={video.url}
+            />
+        </div>
+
         <div className='card-content'>
-            
             <div className='vid-card-title-container'>
-                <h2 className="vid-card-title">{video.title}</h2>
+                <h2>{video.title}</h2>
             </div>
             
             <div className='vid-card-buttons'>
@@ -28,7 +28,7 @@ const VideoCard = ({ video, key, addToFavorites, favorite }) => {
                 
             </div>
         </div>        
-        </div>
+    </div>
     )
 }
 

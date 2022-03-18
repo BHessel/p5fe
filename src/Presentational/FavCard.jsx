@@ -11,14 +11,14 @@ const FavCard = ({ favorite, key, removeClick }) => {
     
     return (
         <div className="card-container-favs" key={key}>
-            <div className="vid-card-img">
+            <div className="fav-card-img">
                 <img src={favorite.video.thumbnail} alt="video thumbnail"/>
             </div>
-            <div className="vid-card-title">
-                <p>{favorite.video.title}</p>
+
+        <div className='fav-card-content'>
+            <div className="fav-card-title-container">
+                <h2>{favorite.video.title}</h2>
             </div>
-
-
             <div className="modalComponent">
                 <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId='' onClose={() => setOpen(false)} />
                 <button className='btn-primary' onClick={() => setOpen(true)}>Play Now</button>
@@ -27,6 +27,7 @@ const FavCard = ({ favorite, key, removeClick }) => {
                 <button className='remove-btn' onClick={() => removeClick(favorite)}>Remove from Favorites
                 </button>
             </div>
+        </div>
                        
         </div>
     )
