@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import VideoCard from '../Presentational/VideoCard'
 import UserCard from '../Presentational/UserCard'
+import VidPlayer from '../Presentational/VidPlayer'
 import { Link } from 'react-router-dom'
 import { fetchVideos } from './import'
 

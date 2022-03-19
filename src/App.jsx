@@ -14,6 +14,7 @@ import NotFound from './Presentational/NotFound';
 import Banner from './Presentational/Banner'
 import Matches from './Containers/Matches';
 import { fetchFavorites } from './Containers/import';
+import VidPlayer from './Presentational/VidPlayer'
 
 //AWS imports
 import { Amplify } from 'aws-amplify';
@@ -116,6 +117,13 @@ const App = ({ signOut, user }) => {
               allFavs={allFavs}
               currentUser={currentUser}
             />} 
+        />
+        
+        {/* routes to page w/ single video @ full size */}
+        <Route
+          exact path = '/VidPlayer'
+          render={() =>
+            <VidPlayer />} 
         />
 
         <Route

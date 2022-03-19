@@ -134,6 +134,8 @@ code {
   border: none;
 }
 
+
+
 .fav-card-btn {
   display: block;
   width: 100%;
@@ -280,12 +282,21 @@ code {
   color: whitesmoke;
 }
 
+.favs-btn-design a:visited {
+  color: whitesmoke;
+}
+
+.favs-btn-design a:hover {
+  text-decoration: none; color: red; transition: .5s;
+}
+
 button a:link{
   text-decoration: none;
+  color: black;
 }
 
 button a:visited {
-  text-decoration: none; color:whitesmoke;
+  text-decoration: none; color:black;
 }
 
 button a:hover {
@@ -393,3 +404,4 @@ button a:focus {
     height: 48px;
   }
 }
+
