@@ -115,8 +115,26 @@ code {
   padding: 10px 15px;  
 }
 
+.fav-card-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 8px;
+  padding: 10px 15px; 
+}
+
 
 .vid-card-btn {
+  display: block;
+  width: 100%;
+  background-color: whitesmoke;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.fav-card-btn {
   display: block;
   width: 100%;
   background-color: whitesmoke;

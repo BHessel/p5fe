@@ -19,14 +19,15 @@ const FavCard = ({ favorite, key, removeClick }) => {
             <div className="fav-card-title-container">
                 <h2>{favorite.video.title}</h2>
             </div>
-            <div className="modalComponent">
+
+            <div className="fav-card-buttons">
                 <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId='' onClose={() => setOpen(false)} />
-                <button className='btn-primary' onClick={() => setOpen(true)}>Play Now</button>
+                <button className='fav-card-btn' onClick={() => setOpen(true)}>Play Now</button>
+                
+                    <button className='fav-card-btn' onClick={() => removeClick(favorite)}>Remove from Favorites
+                    </button>
+                
             </div> 
-            <div className='conditional'>
-                <button className='remove-btn' onClick={() => removeClick(favorite)}>Remove from Favorites
-                </button>
-            </div>
         </div>
                        
         </div>
