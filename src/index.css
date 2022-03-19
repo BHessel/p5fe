@@ -408,9 +408,9 @@ button a:focus {
 .full-vid-player {
   display: flex;
   justify-content: center;
-  padding: 5px;
+  padding: 15px;
   /* height: 100%; */
-  width: 100vw;
+  /* width: 100vw; */
 }
 
 .player {
@@ -421,8 +421,8 @@ button a:focus {
 
 .background-gradient {
   background: linear-gradient(90deg, black, #564d4d, black);
-  height: 100vw;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 
 }
 
@@ -430,7 +430,7 @@ button a:focus {
   display: flex;
   flex-direction: column;
   background: black;
-  margin: 55px 190px;
+  margin: 50px 190px;
 }
 
 .info-font {
@@ -445,3 +445,53 @@ button a:focus {
   padding: inherit;
 }
 
+.bg-flex-wrapper {
+  background-color: whitesmoke;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  list-style-type: none;
+}
+
+.match-favs {
+  grid-column: 2/6;
+  grid-row: 1/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 4px solid black;
+}
+
+.my-favs {
+  grid-column: 2/4;
+  grid-row: 3/5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 25px;
+  border-right: 2px solid black;
+}
+
+.their-favs {
+  grid-column: 4/6;
+  grid-row: 3/5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: flex-start;
+  margin-top: 25px;
+  border-left: 2px solid black;
+}
+
+.bg-flex-wrapper h2 {
+  margin-bottom: 20px;
+}
+
+li {
+  padding: 5px;
+}

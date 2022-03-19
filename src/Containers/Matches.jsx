@@ -40,25 +40,27 @@ const Matches = ({ allFavs, currentUser }) => {
 
     return (
         <>
-            <div className='match-favs'>
-                <h3>You're both interested in...</h3>
-                {showUniqueMatches.map((match, i) => 
-                    <li>{match}</li>
-                )}
-            </div>
+            <div className='bg-flex-wrapper'>
+                <div className='match-favs'>
+                    <h2>You're both interested in...</h2>
+                    {showUniqueMatches.map((match, i) => 
+                        <li>{match}</li>
+                    )}
+                </div>
 
-            <div className='my-favs'>
-                <h3>My Favorites</h3>
-                {sortCurrentUserFavs.map((favorite, i) =>
-                    <li>{favorite.video.title}</li>
-                )}
-            </div>
+                <div className='my-favs'>
+                    <h2>My Favorites</h2>
+                    {sortCurrentUserFavs.map((favorite, i) =>
+                        <li>{favorite.video.title}</li>
+                    )}
+                </div>
 
-            <div className='their-favs'>
-                <h3>Matches Favorites</h3>      
-                {sortMatchUserFavs.map((favorite, i) =>
-                    <li>{favorite.video.title}</li>
-                )}
+                <div className='their-favs'>
+                    <h2>Matches Favorites</h2>      
+                    {sortMatchUserFavs.map((favorite, i) =>
+                        <li>{favorite.video.title}</li>
+                    )}
+                </div>
             </div>
         </>
     )
