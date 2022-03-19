@@ -405,3 +405,43 @@ button a:focus {
   }
 }
 
+.full-vid-player {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  /* height: 100%; */
+  width: 100vw;
+}
+
+.player {
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  border-radius: 25px;
+  
+}
+
+.background-gradient {
+  background: linear-gradient(90deg, black, #564d4d, black);
+  height: 100vw;
+  width: 100vw;
+
+}
+
+.video-info-card {
+  display: flex;
+  flex-direction: column;
+  background: black;
+  margin: 55px 190px;
+}
+
+.info-font {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 10px;
+  margin-left: 2%;
+}
+
+.flex-info-font {
+  padding: inherit;
+}
+
