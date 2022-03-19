@@ -48,6 +48,10 @@ const Matches = ({ allFavs, currentUser }) => {
                     )}
                 </div>
 
+                <div className='return-home'>
+                    <button></button>
+                </div>
+
                 <div className='my-favs'>
                     <h2>My Favorites</h2>
                     {sortCurrentUserFavs.map((favorite, i) =>
@@ -56,7 +60,7 @@ const Matches = ({ allFavs, currentUser }) => {
                 </div>
 
                 <div className='their-favs'>
-                    <h2>Matches Favorites</h2>      
+                    <h2>MATCHES Favorites</h2>      
                     {sortMatchUserFavs.map((favorite, i) =>
                         <li>{favorite.video.title}</li>
                     )}
