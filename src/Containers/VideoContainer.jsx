@@ -85,25 +85,30 @@ const VideoContainer = ({ currentUser, allUsers }) => {
                 <div className='friend-search bg-color'>
                 {/* this is the form to search for friends to follow */}
                     <p>Search For Your Friends</p>
-                    <form className='friend-search-2' onSubmit={(e) => findFriend(e)}>
+                    <form className='friend-search-form' onSubmit={(e) => findFriend(e)}>
                         <input className='search' type='text' placeholder='Enter email' ref={userSearchRef} onChange={handleSearch} />
                         <button className='submit-btn' type='submit'>
                             Search
                         </button>
-                        {/* this p should be light grey, small, below searchbox */}
                     </form>
 
                 {/* this is where searched friends will appear */}
                 {/* should be hidden initially, and reveal when a match is found */}
-                <div className="show-friend-search">
-                    <h4>{foundUser.length > 0 ? <UserCard foundUser={foundUser} currentUser={currentUser} /> : <div></div> }</h4>                   
                 </div>
-                {/* </div> close vid-grid-top */}
-            
-            </div>
                 <div className='subheader bg-color'>
                         <p>Enter your friend's username or email to make yourselves match</p>
                     </div>
+
+                <div className="show-friend-search bg-color">
+                        {
+                        foundUser.length > 0 ?
+                        <UserCard foundUser={foundUser} currentUser={currentUser} /> :
+                        <div className='friend-search-2'></div>
+                        }                  
+                {/* </div> close vid-grid-top */}
+            
+            </div>
+                
                 <div className='favs-btn bg-color'>
                     <button className='favs-btn-design'>
                         <Link to='/Favorites'>
