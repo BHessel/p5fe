@@ -17,12 +17,12 @@ import { fetchFavorites } from './Containers/import';
 import VidPlayer from './Presentational/VidPlayer'
 
 //AWS imports
-import { Amplify } from 'aws-amplify';
-import { withAuthenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
-import awsExports from './aws-exports';
+// import { Amplify } from 'aws-amplify';
+// import { withAuthenticator } from '@aws-amplify/ui-react';
+// import '@aws-amplify/ui-react/styles.css';
+// import awsExports from './aws-exports';
 
-Amplify.configure(awsExports);
+// Amplify.configure(awsExports);
 
 const App = ({ signOut, user }) => {
 
@@ -136,4 +136,5 @@ const App = ({ signOut, user }) => {
   )
 }
 
-export default withAuthenticator(App)
+export default App
+// export default withAuthenticator(App)
