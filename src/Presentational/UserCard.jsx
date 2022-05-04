@@ -23,21 +23,23 @@ const UserCard = ({ foundUser, currentUser }) => {
     }
 
     return (
-        <div>
-            <p>Found! {foundUser[0].username} </p>
-            <button onClick={(e) => followUser(e)}>Follow User</button>
-            {/* write an onClick function that initiates a follow and alerts user is followed */}
-            <button>Unfollow</button>
-            {/* write function to delete the follow, alerts unfollowed */}
-            <button>
-                <Link to={{
-                    pathname: "/Matches",
-                    state: { matchUser: foundUser }
-                }}>
-                    See Matches
-                </Link>
-            </button>
+        <div className='user-card-main'>
+            <h4>Found! {foundUser[0].username} </h4>
 
+            <div className='user-card-buttons'>
+                <button className='button-36' onClick={(e) => followUser(e)}>Follow User</button>
+                {/* write an onClick function that initiates a follow and alerts user is followed */}
+                <button className='button-36'>Unfollow</button>
+                {/* write function to delete the follow, alerts unfollowed */}
+                <button className='button-36'>
+                    <Link to={{
+                        pathname: "/Matches",
+                        state: { matchUser: foundUser }
+                    }}>
+                        See Matches
+                    </Link>
+                </button>
+            </div>
         </div>
     )
 }

@@ -7,52 +7,52 @@ const LoginForm = ({ setCurrentUser, setLoggedIn }) => {
 
     const handleUsername = (e) => {
         let username = e.target.value
-        // console.log(username)
         setUsername(username)
     }
     
     const handlePassword = (e) => {
         let password = e.target.value
-        // console.log(password)
         setPassword(password)
     }
 
-    const createUser = (e) => {
+    //BELOW IS ORIGINAL CREATE USER AND HANDLE LOGIN SUBMIT FUNCTIONS
+    // const createUser = (e) => {
         
-        e.preventDefault()
-        // e.target.reset();
+    //     e.preventDefault()
+    //     // e.target.reset();
         
-        let user = {
-            username: username,
-            password: password
-        }
+    //     let user = {
+    //         username: username,
+    //         password: password
+    //     }
           
-        let requestPackage = {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({ user })
-        }
+    //     let requestPackage = {
+    //         method: "POST",
+    //         headers: {"Content-Type": "application/json"},
+    //         body: JSON.stringify({ user })
+    //     }
 
-        fetch("http://localhost:3000/users", requestPackage)
-            .then((r) => r.json())
-            .then(userData => setCurrentUser(userData))  
-    }
+    //     fetch("http://localhost:3000/users", requestPackage)
+    //         .then((r) => r.json())
+    //         .then(userData => setCurrentUser(userData))  
+    // }
 
-    const handleLoginSubmit = () => {
+    // const handleLoginSubmit = () => {
         
-        let user = {
-            username: username,
-            password: password
-        }
-        console.log('this is the login user data:', user)
-        setCurrentUser({ user })
-    }
-   
+    //     let user = {
+    //         username: username,
+    //         password: password
+    //     }
+    //     console.log('this is the login user data:', user)
+    //     setCurrentUser({ user })
+    // }
+
 
     return (
         <>
         <div className="create-user left-side">
-                    <form onSubmit={createUser}>
+                    {/* <form onSubmit={createUser}> */}
+                    <form onSubmit="">
 
                         <h3>Create an Account</h3>
                         
@@ -74,7 +74,8 @@ const LoginForm = ({ setCurrentUser, setLoggedIn }) => {
 
                 
                 <div className="login-form right-side">
-                    <form onSubmit={handleLoginSubmit}>
+                    {/* <form onSubmit={handleLoginSubmit}> */}
+                    <form onSubmit="">
                         <h3>Log in</h3>
                         
                         <div className="form-group">

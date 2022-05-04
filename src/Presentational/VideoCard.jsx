@@ -1,32 +1,44 @@
 import React, { useState } from 'react'
-import ModalVideo from 'react-modal-video'
-import '../../node_modules/react-modal-video/scss/modal-video.scss'
+import VideoPlay from './video'
+import { Link } from 'react-router-dom'
 
 
 const VideoCard = ({ video, key, addToFavorites, favorite }) => {
+        
 
-    const [isOpen, setOpen] = useState(false)
     
     return (
-        <div className="card-bg-dark" key={key}>
-            <div className="image">
-                <img src={video.thumbnail} alt="video thumbnail"/>
-            </div>
-            <div className="title">
-                <p>{video.title}</p>
-            </div>
-            <div className="modalComponent">
-                <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={video.url.split('/')[3]} onClose={() => setOpen(false)} />
-                <button className='btn-primary' onClick={() => setOpen(true)}>Play Now</button>
-            </div> 
-            <div className='conditional'>
-                {window.location.pathname === '/Favorites' ?
-                <button className='remove-btn' onClick=''>Remove from Favorites</button> : 
-                <button className='add-btn' onClick={() => addToFavorites(video)}>Add to Favorites</button>
-                }  
-            </div>
-                       
+
+    <div className="card-container" key={key}>
+        <div className="vid-card-img">
+            <VideoPlay
+              videoURL={video.url}
+            />
         </div>
+
+        <div className='card-content'>
+            <div className='vid-card-title-container'>
+                <h2>{video.title}</h2>
+            </div>
+            
+            <div className='vid-card-buttons'>
+                    <button className='vid-card-btn'>
+                        <Link to={{
+                            pathname: '/VidPlayer',
+                            state: {video: video}    
+                        }}>
+                            Play in Full Size        
+                        </Link>
+                    </button>
+               
+                    {window.location.pathname === '/Favorites' ?
+                    <button className='remove-btn ' onClick=''>Remove from Favorites</button> : 
+                    <button className='vid-card-btn' onClick={() => addToFavorites(video)}>Add to Favorites</button>
+                    }  
+                
+            </div>
+        </div>        
+    </div>
     )
 }
 

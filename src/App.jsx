@@ -4,57 +4,81 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import { getUsers } from '../src/Containers/import'
+
+//Component imports
 import VideoContainer from './Containers/VideoContainer';
 import LoginForm from './Containers/LoginForm';
 import Favorites from './Containers/Favorites';
 import NotFound from './Presentational/NotFound';
 import Banner from './Presentational/Banner'
 import Matches from './Containers/Matches';
+import { fetchFavorites } from './Containers/import';
+import VidPlayer from './Presentational/VidPlayer'
 
+//AWS imports
+// import { Amplify } from 'aws-amplify';
+// import { withAuthenticator } from '@aws-amplify/ui-react';
+// import '@aws-amplify/ui-react/styles.css';
+// import awsExports from './aws-exports';
 
-const App = () => {
+// Amplify.configure(awsExports);
 
-  // const [ loggedIn, setLoggedIn ] = useState(false)
-  
+const App = ({ signOut, user }) => {
+
   const [ currentUser, setCurrentUser ] = useState({id: 1, username: 'ben123', password: 'password'})
-
-
   const [ allFavs, setAllFavs ] = useState([])
-
-    console.log('allFavs', allFavs)
+  const [ allUsers, setAllUsers ] = useState([])
+  
     
     //fetch user favorites
     useEffect(() => {
-        const url = 'http://localhost:3000/favorites'
-
-        const fetchFavorites = async () => {
+        const handleFetchFavorites = async () => {
             try {
-                const response = await fetch(url)
-                const listAllFavorites = await response.json()
-                // console.log('listAllFavorites', listAllFavorites)
-                setAllFavs(listAllFavorites)
-            } catch (error) {
-                console.log("error", error)
+                let allFavorites = await fetchFavorites()
+                setAllFavs(allFavorites)
+            } catch (e) {
+                console.log("error", e)
             }
         }
-        fetchFavorites()
+        handleFetchFavorites()
     }, [])
+
+    //set state for allUsers
+    useEffect(() => {
+      const handleGetUsers = async () => {
+          try {
+              let users = await getUsers()
+              setAllUsers(users)
+          } catch(e) {
+              console.log('e', e)
+          }
+      }
+      return handleGetUsers()
+    }, [])
+
+
+  console.log('allUsers list', allUsers)
 
   
   return (
     <>
+    <div className='main-grid'>
+    {/* <div className='banner-container'> */}
       <Banner 
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}
+        signOut={signOut}
       />
+      {/* </div> */}
 
-      <div>
+      <div className='body-container'>
 
-      {currentUser ? (
-        <h1>Welcome back User</h1>
+      {/* {currentUser ? (
+        <h1>Welcome back {user.attributes.email}</h1>
       ) : (
         <h1>still need to log in</h1>
-      )}
+      )} */}
 
       <Switch>
         <Route
@@ -73,6 +97,7 @@ const App = () => {
           render={() =>
             <VideoContainer
               currentUser={currentUser}
+              allUsers={allUsers}
             />} 
         />
 
@@ -93,14 +118,23 @@ const App = () => {
               currentUser={currentUser}
             />} 
         />
+        
+        {/* routes to page w/ single video @ full size */}
+        <Route
+          exact path = '/VidPlayer'
+          render={() =>
+            <VidPlayer />} 
+        />
 
         <Route
           component={NotFound}
         />
       </Switch>
       </div>
+      </div>
     </>
   )
 }
 
 export default App
+// export default withAuthenticator(App)

@@ -1,51 +1,34 @@
 import React, { useState, useEffect, useRef } from 'react'
 import VideoCard from '../Presentational/VideoCard'
 import UserCard from '../Presentational/UserCard'
+import VidPlayer from '../Presentational/VidPlayer'
 import { Link } from 'react-router-dom'
+import { fetchVideos } from './import'
 
 
-const VideoContainer = ({ currentUser }) => {
+const VideoContainer = ({ currentUser, allUsers }) => {
     
     const [ videos, setVideos ] = useState([])
-    const [ allUsers, setAllUsers ] = useState([])
+    // const [ allUsers, setAllUsers ] = useState([])
     const [ userSearch, setUserSearch ] = useState('')
     const [ foundUser, setFoundUser ] = useState([])
     const userSearchRef = useRef()
-
-
+    const [ currentPage, setCurrentPage ] = useState(1)
     
-    //fetch all videos
+    //set state for all videos
     useEffect(() => {
-        const url = 'http://localhost:3000/videos'
-
-        const fetchVideos = async () => {
+        const handleFetchVideos = async () => {
             try {
-                const response = await fetch(url)
-                const videoList = await response.json()
-                setVideos(videoList)
-            } catch (error) {
-                console.log("error", error)
+                let allVideos = await fetchVideos()
+                setVideos(allVideos)
+            } catch(e) {
+                console.log('e', e)
             }
         }
-        fetchVideos()
+        return handleFetchVideos()
     }, [])
+
     
-    //fetch all users
-    useEffect(() => {
-        const userURL = 'http://localhost:3000/users/'
-
-        const fetchUsers = async () => {
-            try {
-                const response = await fetch(userURL)
-                const userList = await response.json()
-                setAllUsers(userList)
-            } catch (error) {
-                console.log("error", error)
-            }
-        }
-        fetchUsers()
-    }, [])
-
     //add video to favorites
     //POST request plus update state
     const addToFavorites = (video) => {
@@ -68,14 +51,6 @@ const VideoContainer = ({ currentUser }) => {
         }
         
         fetch('http://localhost:3000/favorites', requestPackage)
-        //     .then(response => response.json())
-        //     .then(favorite => {
-        //         if(!userFavorites.includes(favorite)){
-        //             setUserFavorites([...userFavorites, favorite])
-        //         }
-        //     })
-        
-        //         console.log('check localhost to confirm favorite is saved. current state of Favorites is:', userFavorites)
     }
     
     const handleSearch = () => {
@@ -95,26 +70,23 @@ const VideoContainer = ({ currentUser }) => {
     console.log('fetched video list:', videos)
     console.log('fetched user list:', allUsers)
 
+
+
     return (
         <>   
-            <div className="video-container">
-                <h2 className='video-header'>Welcome to Netflix MovieMatcher</h2>
-                <p className='video-subheader'>Scroll or search for shows and movies and watch the trailer in this app. If you like it, add it to your favorites list, and then connect with friends to see where your TV interests match! </p>
+            {/* <div className='body-containers'> */}
+            {/* <div className='vid-grid-top'> */}
+                <h1 className='video-header bg-color'>Welcome to Netflix MovieMatcher</h1>
+                <p className='video-subheader bg-color'>Scroll or search for shows and movies to watch each trailer. If you like it, click "Add to Favorites," and then connect with friends to see where your TV interests match! </p>
 
-                <div className='favs-btn'>
-                    <button>
-                        <Link to='/Favorites'>
-                            See My Favorites
-                        </Link>
-                    </button>
-                </div>
+
 
             {/* in final form, maybe make this its own userSearch component? */}
-                <div className='friend-search'>
+                <div className='friend-search bg-color'>
                 {/* this is the form to search for friends to follow */}
-                    <p>Friend search box</p>
-                    <form onSubmit={(e) => findFriend(e)}>
-                        <input className='search' type='text' placeholder='Search...' ref={userSearchRef} onChange={handleSearch} />
+                    <p>Search For Your Friends</p>
+                    <form className='friend-search-form' onSubmit={(e) => findFriend(e)}>
+                        <input className='search' type='text' placeholder='Enter email' ref={userSearchRef} onChange={handleSearch} />
                         <button className='submit-btn' type='submit'>
                             Search
                         </button>
@@ -122,25 +94,42 @@ const VideoContainer = ({ currentUser }) => {
 
                 {/* this is where searched friends will appear */}
                 {/* should be hidden initially, and reveal when a match is found */}
-                <div className="show-friend-search">
-                    <h4>{foundUser.length > 0 ? <UserCard foundUser={foundUser} currentUser={currentUser} /> : <div></div> }</h4>                   
                 </div>
+                <div className='subheader bg-color'>
+                        <p>Enter your friend's username or email to make yourselves match</p>
+                    </div>
 
-
-                </div>
-
-                    {videos.map((vid, i) =>
-                        <div className={`vid-${i}`}>
-                            <VideoCard 
-                                video={vid}
-                                key={i}
-                                addToFavorites={addToFavorites}
-                            />  
-                        </div>
-                    )}
+                <div className="show-friend-search bg-color">
+                        {
+                        foundUser.length > 0 ?
+                        <UserCard foundUser={foundUser} currentUser={currentUser} /> :
+                        <div className='friend-search-2'></div>
+                        }                  
+                {/* </div> close vid-grid-top */}
+            
             </div>
+                
+                <div className='favs-btn bg-color'>
+                    <button className='favs-btn-design'>
+                        <Link to='/Favorites'>
+                            See My Favorites
+                        </Link>
+                    </button>
+                </div>
+                
+                <div className="video-container">
+                        {videos.map((vid, i) =>
+                                <VideoCard 
+                                    video={vid}
+                                    key={i}
+                                    addToFavorites={addToFavorites}
+                                />  
+                        )}
+                </div>
+                {/* </div> */}
         </>
     )
 }
+
 
 export default VideoContainer

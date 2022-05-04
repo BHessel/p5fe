@@ -25,26 +25,25 @@ const Favorites = ({ allFavs, currentUser }) => {
 
     return (
         <>
-            <button>
+        <div>
+            <div className='favs-btn-2 bg-color'>
+            <button className='favs-btn-design'>
                 <Link to='/'>
                 Return Home
                 </Link>
             </button>
-
-            <div className="playlist-container">
-                    <h1 className='playlist-header'>My Playlist</h1>
-                        
+        </div>
+            <div className="video-container">                  
                         {currentUserFavs.map((fav, i) =>
                              (<>
-                             <div className={`pl-grid-${i}`}>
                                 <FavCard 
                                     favorite={fav}
                                     key={i}
                                     removeClick={removeFromFavorites}
                                 />
-                            </div>
                             </>
                         ))}    
+            </div>
             </div>
         </>
     )
